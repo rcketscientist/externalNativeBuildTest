@@ -1,0 +1,3 @@
+[submodule "jni/libjpeg-turbo/src"]
+	path = jni/libjpeg-turbo/src
+	url = https://github.com/rcketscientist/libjpeg-turbo.git

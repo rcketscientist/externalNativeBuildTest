@@ -1,0 +1,79 @@
+apply plugin: 'com.android.model.native'
+
+model {
+    android {
+        compileSdkVersion 23
+        buildToolsVersion "23.0.2"
+
+        defaultConfig.with {
+            minSdkVersion.apiLevel = 21
+            targetSdkVersion.apiLevel = 21
+        }
+
+        ndk {
+            moduleName "jpeg-turbo"
+        }
+
+        sources {
+            //noinspection GroovyAssignabilityCheck
+            main {
+                jni {
+                    source {
+						srcDir "src"
+                        srcDir "include"
+
+                        // Miscellaneous (weren't in my original build)
+                        exclude "src/ansi2knr.c"
+                        exclude "src/cderror.h"
+                        exclude "src/cdjpeg.h"
+                        exclude "src/cdjpeg.c"
+                        exclude "src/cjpeg.c"
+                        exclude "src/ckconfig.c"
+                        exclude "src/djpeg.c"
+                        exclude "src/example.c"
+                        exclude "src/jconfig.bcc"   //necessary?
+                        exclude "src/jpegtran.c"
+                        exclude "src/transupp.h"
+                        exclude "src/transupp.c"
+
+                        // Memory related code for other OS
+                        exclude "src/jmemmac.c"
+                        exclude "src/jmemansi.c"
+                        exclude "src/jmem-ashmem.c" // Could be turned on
+                        exclude "src/jmemdos.c"
+                        exclude "src/jmemnobs.c"
+                        exclude "src/jmemansi.c"
+                        exclude "src/jmemname.c"
+
+                        //Read formats
+                        exclude "src/rdbmp.c"
+                        exclude "src/rdcolmap.c"
+                        exclude "src/rdgif.c"
+                        exclude "src/rdjpgcom.c"
+                        exclude "src/rdppm.c"
+                        exclude "src/rdrle.c"
+                        exclude "src/rdswitch.c"
+                        exclude "src/rdtarga.c"
+
+                        //Write formats
+                        exclude "src/wrbmp.c"
+                        exclude "src/wrgif.c"
+                        exclude "src/wrjpgcom.c"
+                        exclude "src/wrppm.c"
+                        exclude "src/wrrle.c"
+                        exclude "src/wrtarga.c"
+
+
+                        // Architectures (this should be swapped during build)
+                        exclude "src/mips_jidctfst.c"
+                        exclude "src/jidintelsse.c" // intel stuff, arch switch
+                    }
+                    exportedHeaders {
+                        srcDir "include"
+                        srcDir "src"
+                    }
+                }
+            }
+        }
+    }
+}

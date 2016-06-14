@@ -1,0 +1,1 @@
+javah -o src\imageprocessor.h -bootclasspath %sdk%\platforms\android-21\android.jar -classpath ..\..\library\build\intermediates\classes\debug com.anthonymandra.imageprocessor.ImageProcessor
