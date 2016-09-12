@@ -1,14 +1,19 @@
 apply plugin: 'com.android.library'
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "23.0.3"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 23
+        targetSdkVersion 24
 
-        ndkBuild {
-            abiFilters "armeabi-v7a"
+        externalNativeBuild
+        {
+            ndkBuild {
+//                cFlags "-DTEST_C_FLAG1" "-DTEST_C_FLAG2"
+//                cppFlags "-DTEST_CPP_FLAG2" "-DTEST_CPP_FLAG2"
+                abiFilters "armeabi-v7a"
+            }
         }
     }
 
@@ -21,5 +26,5 @@ android {
 
 
 dependencies {
-    compile 'com.android.support:support-annotations:23.4.0'
+    compile 'com.android.support:support-annotations:24.2.0'
 }
